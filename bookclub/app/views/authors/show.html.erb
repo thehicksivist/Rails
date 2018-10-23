@@ -6,13 +6,17 @@
 </p>
 
 <p>
-  <strong>Books:</strong>
-  <%= @author.books %>
+  <strong>Image:</strong>
+  <%= @author.image %>
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @author.image %>
+  <strong>Books:</strong>
+  
+  <% for book in @author.books %>
+    <p><%= book.title %></p>
+  <% end %>
+        
 </p>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |

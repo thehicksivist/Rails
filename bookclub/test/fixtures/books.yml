@@ -3,9 +3,9 @@
 one:
   title: MyString
   image: MyString
-  price: 1
+  author: one
 
 two:
   title: MyString
   image: MyString
-  price: 1
+  author: two

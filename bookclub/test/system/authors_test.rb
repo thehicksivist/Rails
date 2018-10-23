@@ -16,7 +16,7 @@ class AuthorsTest < ApplicationSystemTestCase
 
     fill_in "Books", with: @author.books
     fill_in "Image", with: @author.image
-    fill_in "Name", with: @author.name
+    fill_in "Title", with: @author.title
     click_on "Create Author"
 
     assert_text "Author was successfully created"
@@ -29,7 +29,7 @@ class AuthorsTest < ApplicationSystemTestCase
 
     fill_in "Books", with: @author.books
     fill_in "Image", with: @author.image
-    fill_in "Name", with: @author.name
+    fill_in "Title", with: @author.title
     click_on "Update Author"
 
     assert_text "Author was successfully updated"
