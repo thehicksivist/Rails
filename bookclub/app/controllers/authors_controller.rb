@@ -25,6 +25,7 @@ class AuthorsController < ApplicationController
   # POST /authors.json
   def create
     @author = Author.new(author_params)
+    @author.id = Author.last.id + 1 || 1
 
     respond_to do |format|
       if @author.save
@@ -69,6 +70,6 @@ class AuthorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
-      params.require(:author).permit(:title, :image, :books)
+      params.require(:author).permit(:name, :image, :books)
     end
 end

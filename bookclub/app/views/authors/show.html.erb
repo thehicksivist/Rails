@@ -14,7 +14,7 @@
   <strong>Books:</strong>
   
   <% for book in @author.books %>
-    <p><%= book.title %></p>
+    <p><%= link_to book.title, book %></p>
   <% end %>
         
 </p>
