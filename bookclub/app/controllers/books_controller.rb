@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @book.author = Author.find(params[:author_id])
   end
 
   # GET /books/1/edit

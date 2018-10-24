@@ -27,6 +27,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.image.attach(post_params[:image])
+
 
     respond_to do |format|
       if @post.save
@@ -71,13 +73,13 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :user_id)
+      params.require(:post).permit(:title, :content, :image)
     end
 
     #checking user account before performing actions
     def check_permissions
       if !@post.can_change?(current_user)
-        redirect_to(request.referrer || root_path, :alert = "You are not authorized to perform that action!")
+        redirect_to(request.referrer || root_path, :alert => "You are not authorized to perform that action!")
       end
     end
 end

@@ -11,6 +11,12 @@
 </p>
 
 <p>
+  <% if @post.image.attached? %>
+    <%= cl_image_tag(@post.image.key) %>
+  <% end %>
+</p>
+
+<p>
   <strong>User:</strong>
   <%= @post.user.email %>
 </p>

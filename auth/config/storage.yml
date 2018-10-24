@@ -32,3 +32,9 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: dvqlfwgtf
+  api_key: 676842434738685
+  api_secret: R0JVrRWGP-AB1tBkgsDJb7Um4cM
