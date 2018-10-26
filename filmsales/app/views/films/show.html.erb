@@ -25,5 +25,23 @@
   <%= @film.price %>
 </p>
 
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= @film.title %>"
+          data-label="Buy Now!"
+          data-amount="<%= @film.price_in_cents %>"
+          data-locale="auto"></script>
+<% end %>
+
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>
+

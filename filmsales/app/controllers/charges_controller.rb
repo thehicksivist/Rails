@@ -3,7 +3,8 @@ class ChargesController < ApplicationController
     end
 
     def create
-        @amount = 500
+        @film = Film.find(session[:film_id])
+        @amount = @film.price_in_cents
 
         customer = Stripe::Customer.create(
             :email => params[:stripeEmail],
@@ -13,9 +14,12 @@ class ChargesController < ApplicationController
         charge = Stripe::Charge.create(
             :customer => customer.id,
             :amount => @amount,
-            :description => 'Rails charge',
+            :description => "Filmsales: #{@film.title}",
             :currency => 'aud'
         )
+
+        flash[:notice] = "Thanks for your payment of A$#{@film.price}"
+        redirect_to films_path
 
         rescue Stripe::CardError => e
             flash[:error] = e.message

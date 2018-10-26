@@ -10,6 +10,7 @@ class FilmsController < ApplicationController
   # GET /films/1
   # GET /films/1.json
   def show
+    session[:film_id] = params[:id]
   end
 
   # GET /films/new
